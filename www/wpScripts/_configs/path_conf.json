@@ -1,0 +1,22 @@
+{
+	"__comment__1": "gw_MAIN.py PATHS",
+	"sensor_conf_": "/www/wpScripts/_configs/sensor_conf.json",
+	"gw_conf_": "/www/wpScripts/_configs/gw_conf.json",
+	"sqlitedb": "/www/wpScripts/_databases/gw_FlaskDb.db",
+	"p_flask_log": "/var/process_logs/flask_daemon.log",
+	"p_hb_log": "/var/process_logs/heartBeat_daemon.log",
+	"p_sendTemoDist_log": "/var/process_logs/sendTempDist_daemon.log",
+	"p_reboot_log": "/var/process_logs/Reboot_daemon.log",
+	"p_processmonitor_log": "/var/process_logs/processmonitor_daemon.log",
+	"p_readdist_log": "/var/process_logs/readDist_daemon.log",
+	"p_readlora_log": "/var/process_logs/readLoRa_daemon.log",
+	"p_update_log": "/var/process_logs/update_daemon.log",
+	"__comment__0": "AP config path",
+	"ap_config": "/www/wpScripts/_configs/wpa_supplicant_ap.conf",
+	"__comment__1": "update.py PATHS",
+	"gw_conf_new_": "/www/wpScripts/_configs/gw_conf-new.json",
+	"__comment__2": "memCheck.py PATHS",
+	"p_memCheck_log": "/var/process_logs/memCheck_daemon.log",
+	"__comment__3": "processMonitor.py PATHS",
+	"proMon_f": ["/www/wpScripts/_web/gw_Main.py","/www/wpScripts/_connect/heartbeat.py","/www/wpScripts/_sysmonitor/ProcessMonitor.py","/www/wpScripts/_dataloggers/readLora.py","/www/wpScripts/_dataloggers/readDist.py","/www/wpScripts/_sysmonitor/reboot.py","/www/wpScripts/_connect/sendTempDist.py","/www/wpScripts/_update/update.py","/www/wpScripts/_sysmonitor/memCheck.py"]
+}

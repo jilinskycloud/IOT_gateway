@@ -1,0 +1,18 @@
+{
+    "gw_data": [
+        {
+            "key": "",
+            "times": [
+                {
+                    "reboot": "03:00:00"
+                }
+            ],
+            "gw_id": "SC-CC202004-001",
+            "pdata_status": 1,
+            "system_time": 1591166910,
+            "hbeat_status": 1,
+            "version": "v-0.001",
+            "wget_url": "http://192.168.1.75/php_code/gw-002.zip"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sensors_data": [
+        {
+            "sn_id": "xyz",
+            "ST": "temperature",
+            "data_interval": "30",
+            "hb_api_address": "http://xy.cenwei.net:2980/api/admin/Newiot/saveHeartBeat",
+            "version": "002",
+            "data_api_address": "http://xy.cenwei.net:2980/api/admin/Newiot/saveSensorsData",
+            "hb_interval": "1"
+        },
+        {
+            "sn_id": "41-B6",
+            "data_api_address": "http://xy.cenwei.net:2980/api/admin/Newiot/saveSensorsData",
+            "data_interval": "4",
+            "hb_api_address": "http://xy.cenwei.net:2980/api/admin/Newiot/saveHeartBeat",
+            "version": "444",
+            "ST": "temperature",
+            "hb_interval": "4"
+        }
+    ]
+}

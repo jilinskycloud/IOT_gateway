@@ -1,0 +1,15 @@
+{
+    "gw_data": [
+        {
+            "hb_status": 1,
+            "log_url": "http://xy.cenwei.net:2980/api/admin/Newiot/receive",
+            "system_time": 1615363910,
+            "gw_id": "SC-CC20201015-0011",
+            "data_key": "abc12345",
+            "natcat_url": "192.168.1.75 4455",
+            "reboot_time": "21:03:03",
+            "data_status": 1,
+            "heartbeat_url": "http://xy.cenwei.net:2980/api/admin/Newiot/saveHeartBeat"
+        }
+    ]
+}

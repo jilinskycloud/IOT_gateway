@@ -1,0 +1,34 @@
+#! /bin/sh
+# /etc/init.d/memCheck_daemon
+
+#
+### BEGIN INIT INFO
+# Provides:          memCheck_daemon
+# Processname:       memCheck_daemon
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     S 2
+# Default-Stop:      0 1 6
+# Short-Description: Buffer Mem Check 
+# Description:       It flush the buffer if the space is not enough.
+### END INIT INFO
+#exec 1>/tmp/memCheck_daemon.log 2>&1
+
+case "$1" in
+  start)
+    echo "Starting memCheck"
+    # run application you want to start
+    python3 /www/wpScripts/_sysmonitor/memCheck.py &
+    ;;
+  stop)
+    echo "Stopping memCheck_daemon"
+    # kill application you want to stop
+    kill $(ps aux | grep "python3 /www/wpScripts/_sysmonitor/memCheck.py" | grep -v grep | awk '{print $2}')
+    ;;
+  *)
+    echo "Usage: /etc/init.d/memCheck_daemon {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0

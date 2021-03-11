@@ -1,0 +1,157 @@
+{% extends 'en/layout.html' %}
+{% block title %}
+  Network
+{% endblock %}
+{% block network %}
+
+
+<div class="content-wrapper">
+<nav>
+  <div>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Network Configuration:</a>
+    <a class="nav-item nav-link" id="nav-resetBle-tab" data-toggle="tab" href="#nav-resetBle" role="tab" aria-controls="nav-resetBle" aria-selected="false">Wifi Configuration</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <br>
+    <div>
+	 <form action = "/network" method = "POST">     
+		<textarea class="form-control .console_" id="exampleFormControlTextarea1" name="net_data" rows="30"  class="json_data">{{ net }}</textarea><br>
+		<button type="submit" class="btn btn-light px-5">Apply & Save</button><br>
+	  </form><br>
+    </div>
+  </div>
+	  <div class="tab-pane fade" id="nav-resetBle" role="tabpanel" aria-labelledby="nav-update-tab">
+		<br>
+		<div>
+	<div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col-lg-12">
+         <div class="card">
+
+
+		<div class="card-header">
+      <i class="zmdi zmdi-accounts-list-alt text-danger"></i>  Client Settings 
+      {% if state == 'managed' %}
+      <span style="float: right; margin-right: 15px;">
+        <i class="zmdi zmdi-xbox text-success"></i>
+      </span>
+      {% else %}
+      <span style="float: right; margin-right: 15px;">
+        <i class="zmdi zmdi-xbox text-danger"></i>
+      </span>
+      {% endif %}
+    </div>
+
+
+
+		 <div class="card-body">
+		 <div class="form-group">
+            <button class="btn btn-light px-5" onclick="scanit()"><i class="zmdi zmdi-rss"></i> Scan Wifi</button>
+          </div>
+            <form action = "/connectWifi" method = "POST">
+           <div class="form-group">
+            <label for="input-1">SSID</label>
+			<select class="form-control" id="input-1" class="selectpicker" name="ssid" required>
+			<!-- APPEND Here -->
+			</select>
+            <!-- <input type="text" class="form-control" id="input-1" placeholder="Enter Your Name">  -->
+           </div>
+           <div class="form-group">
+            <label for="input-4">Password</label>
+            <input type="text" class="form-control" id="input-4" name="password" placeholder="Enter Password" required>
+            <input type="text" class="form-control" id="input-4" name="type" value="client" hidden>
+           </div>
+           <div class="form-group">
+            <button type="submit" class="btn btn-light px-5">Connect</button>
+          </div>
+          </form>
+         </div>
+         </div>
+
+		 <div class="card">
+		 <div class="card-header"><i style="color: #ff00eb;" class="zmdi zmdi-accounts-list-alt"></i>  AP Settings
+
+
+      {% if state == 'AP' %}
+      <span style="float: right; margin-right: 15px;">
+        <i class="zmdi zmdi-xbox text-success"></i>
+      </span>
+      {% else %}
+      <span style="float: right; margin-right: 15px;">
+        <i class="zmdi zmdi-xbox text-danger"></i>
+      </span>
+      {% endif %}
+
+
+
+     </div>
+		 <div class="card-body">
+            <form action = "/network" method = "POST">
+           <div class="form-group">
+			<div class="form-group">
+            <label for="input-4">SSID</label>
+            <input type="text" class="form-control" id="input-4" name="n_ap_ssid" placeholder="SSID" value="{{ ssid }}" required>
+
+            <input type="text" name="o_ap_ssid" value="{{ ssid }}" hidden>
+            <input type="text" name="o_ap_password" value="{{ password }}" hidden>
+           </div>
+
+            <!-- <input type="text" class="form-control" id="input-1" placeholder="Enter Your Name">  -->
+           </div>
+           <div class="form-group">
+            <label for="input-4">Password</label>
+            <input type="text" class="form-control" id="input-4" name="n_ap_password" placeholder="Enter Password" value="{{ password }}" required>
+            <input type="text" class="form-control" id="input-4" name="type" value="ap" hidden>
+           </div>
+           <div class="form-group">
+            <button type="submit" class="btn btn-light px-5">Update</button>
+          </div>
+          </form>
+         </div>
+         </div>
+      </div>
+	  </div>
+		</div>
+		<br>
+	  </div>
+  </div>
+ </div>
+ <script>
+ $(document).ready(function() {
+	$("#input-1").empty();
+ });
+ function scanit(){
+	console.log("Wow i'm gonna scan it hehe haha huhu!!!");
+    $.ajax({
+      type: "POST",
+      url: "/scanWifi",
+      success: function(data) {
+         console.log(data);
+		 data = data.split(',');
+		 data = jQuery.grep(data, function(n){ return (n); });
+		 console.log(data);
+		 $("#input-1").empty(); //To reset cities
+		$.each(data, function(i, data) 
+			{ //to list cities
+				console.log(i, data)
+				$("#input-1").append('<option value='+data+'>'+data+'</option>');
+			}
+		);
+		
+		 
+		 
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(xhr.status);
+        console.log(thrownError);
+      }
+	});
+ }
+ </script>
+{% endblock %}
+
+
+

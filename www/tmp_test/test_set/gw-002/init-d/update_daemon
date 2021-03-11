@@ -1,0 +1,35 @@
+#! /bin/sh
+# /etc/init.d/update_daemon
+
+#
+### BEGIN INIT INFO
+# Provides:          update_daemon
+# Processname:       update_daemon
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     S 2
+# Default-Stop:      0 1 6
+# Short-Description: Flask , Router web interface 
+# Description:       Flask is an open source, A micro python web framework.
+#                    http://flask.com
+### END INIT INFO
+#exec 1>/tmp/update_daemon.log 2>&1
+
+case "$1" in
+  start)
+    echo "Starting update daemon"
+    # run application you want to start
+    python3 /www/web/_netw/update.py > /var/log/update_daemon.log &
+    ;;
+  stop)
+    echo "Stopping update_daemon"
+    # kill application you want to stop
+    kill $(ps aux | grep "python3 /www/web/_netw/update.py" | grep -v grep | awk '{print $2}')
+    ;;
+  *)
+    echo "Usage: /etc/init.d/update_daemon{start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0

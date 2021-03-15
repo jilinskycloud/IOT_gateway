@@ -10,6 +10,8 @@ from flask import redirect
 from flask import session
 from flask import jsonify
 from jinja2 import Template
+import httplib2
+import urllib
 import datetime
 import psutil
 import time
@@ -17,7 +19,8 @@ import json
 import sqlite3
 import os
 import redis 
-import subprocess                                                                                         
+import subprocess
+                                                                                      
   
 #			GLOBAL VARIABLES BLOCK
 ###########################################################
@@ -68,18 +71,39 @@ def log(log_str):
     return
 ###
 
-#			This is Get Command Function
+#			This is Get Lock data Function
 ###########################################################
-'''
-@app.route('/getcmd', methods=['GET', 'POST'])
-def getcmd():
+@app.route('/lockCont', methods=['GET', 'POST'])
+def lockCont():
 	if request.method == 'POST':
-		log("Get Command Function.......")
-		input_json = request.get_json(force=True)
-		os.system(input_json)
-	dictToReturn = {'answer':42}
-	return jsonify(dictToReturn)
-'''
+		log("Lock Post Data")
+		lock_data = eval(request.form["json_data"])
+		lock_stt = lock_data['status']
+		lock_pass = lock_data['pass']
+		print("STATUS :: ",lock_stt)
+		print("PASS :: ",lock_pass)
+		if lock_pass == '123456':
+			r.set("status",lock_stt)
+			return "success"
+		else:
+			return "Wrong Password"
+	else:
+		return redirect(url_for('login'))
+###
+
+#			This is UnLock from GW Web Function
+###########################################################
+@app.route('/setLock', methods=['GET', 'POST'])
+def setLock():
+	if 'username' in session:
+		setLock = request.form['setLock']
+		if request.method == 'POST':
+			log("Unlocked : "+setLock)
+			if setLock == "1":
+				r.set("status","1")
+			return redirect(url_for('settings'))
+	else:
+		return redirect(url_for('login'))
 ###
 
 #			This is Scan Wifi Function
@@ -459,6 +483,7 @@ def settings():
 		sn_conf_d = f.read()
 		f = open(gw_conf_,"r")
 		gw_conf_d = f.read()
+		lock_status = r.get("status")
 		if session['lng'] == 'cn':
 			return render_template('cn/settings.html', error=error, data=data, rec=rec, chk=conn_status, stt_lora=stt_lora, sn_conf_d=sn_conf_d, gw_conf_d=gw_conf_d)
 		else:
@@ -542,4 +567,4 @@ if  __name__  ==  '__main__' :
 		#print("log file exists")
 		log("2.2 ==> Log file exists")
 	#time.sleep(60)	
-	app.run(host='0.0.0.0', port=80, threaded = True, debug = True)# ssl_context='adhoc') #Ssl_context = Context ,
+	app.run(host='0.0.0.0', port=80, threaded = True) #, debug = True)# ssl_context='adhoc') #Ssl_context = Context ,

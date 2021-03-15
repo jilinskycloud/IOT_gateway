@@ -265,9 +265,42 @@ $(function() {
          </div>
 		</div>
       </div><!--End Row-->  
-
-
-
+	  
+	<div class="row">
+		<div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><i style="color: #14b6ff;" class="zmdi zmdi-info-outline"></i>  Sensors Info:</h5>
+			  <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sensor ID</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+				{% for k,v in sn_stt.items() %}
+				<tr>
+					{{ dict_item }}
+						<th scope="row">{{loop.index}}</th>
+						<td>{{ k }}</td>
+						{% if v == 'on' %}
+									<td style="color: #04b962; background-color: #4b5659;"><i class="zmdi zmdi-rss"></i></td>
+						{% elif v == 'off' %}
+									<td style="color: #f43643; background-color: #4b5659;"><i class="zmdi zmdi-rss"></i></td> -->
+						{% endif %}
+        </tr>
+				{% endfor %} 
+                </tbody>
+              </table>
+            </div>
+            </div>
+          </div>
+        </div>
+	</div><!--End Row-->
+	
 		<div class="row">
 	         <div class="col-lg-12">
           <div class="card">

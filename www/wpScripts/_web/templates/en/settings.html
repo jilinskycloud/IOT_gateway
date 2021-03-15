@@ -11,11 +11,10 @@
   <div>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Update Login</a>
-	<a class="nav-item nav-link" id="nav-resetLock-tab" data-toggle="tab" href="#nav-resetLock" role="tab" aria-controls="nav-resetLock" aria-selected="false">Lock Settings</a>
     <a class="nav-item nav-link" id="nav-resetBle-tab" data-toggle="tab" href="#nav-resetBle" role="tab" aria-controls="nav-resetBle" aria-selected="false" hidden>Reset LoRa</a>
     <a class="nav-item nav-link" id="nav-conn-tab" data-toggle="tab" href="#nav-conn" role="tab" aria-controls="nav-conn" aria-selected="false" hidden>Connection Settings</a>
-    <a class="nav-item nav-link" id="nav-conf-tab" data-toggle="tab" href="#nav-conf" role="tab" aria-controls="nav-conf" aria-selected="false" hidden>Sensors Config</a>
-    <a class="nav-item nav-link" id="nav-conf-gw-tab" data-toggle="tab" href="#nav-conf-gw" role="tab" aria-controls="nav-conf-gw" aria-selected="false" hidden>GW Config</a>
+    <a class="nav-item nav-link" id="nav-conf-tab" data-toggle="tab" href="#nav-conf" role="tab" aria-controls="nav-conf" aria-selected="false">Sensors Config</a>
+    <a class="nav-item nav-link" id="nav-conf-gw-tab" data-toggle="tab" href="#nav-conf-gw" role="tab" aria-controls="nav-conf-gw" aria-selected="false">GW Config</a>
     <a class="nav-item nav-link" id="nav-resetredis-tab" data-toggle="tab" href="#nav-resetredis" role="tab" aria-controls="nav-resetredis" aria-selected="false" hidden>Reset Redis</a>
     <a class="nav-item nav-link" id="nav-reboot-tab" data-toggle="tab" href="#nav-reboot" role="tab" aria-controls="nav-reboot" aria-selected="false">Reboot System</a>
   </div>
@@ -94,21 +93,6 @@
     </div>
     <br>
   </div>
-<!--   ###############         HERE IS THE LOCK SETTINGS (START)       ###############   -->
-  <div class="tab-pane fade" id="nav-resetLock" role="tabpanel" aria-labelledby="nav-update-tab">
-    <br>
-    <div>
-      <form method="POST" action="/setLock">
-		<input name="setLock" class="form-check-input" id="setLock" value="1" required hidden>
-        <button type="submit" class="btn btn-light px-5">unlock</button>
-      </form>
-    </div>
-    <br>
-  </div>
-<!--   ###############         HERE IS THE LOCK SETTINGS (END)       ###############   -->
-
-
-
 <div class="tab-pane fade" id="nav-resetredis" role="tabpanel" aria-labelledby="nav-update-tab">
     <br>
     <div>

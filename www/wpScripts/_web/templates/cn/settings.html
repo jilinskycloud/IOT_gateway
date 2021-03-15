@@ -11,11 +11,10 @@
   <div>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">更新登录</a>
-	<a class="nav-item nav-link" id="nav-resetLock-tab" data-toggle="tab" href="#nav-resetLock" role="tab" aria-controls="nav-resetLock" aria-selected="false">锁定设置</a>
     <a class="nav-item nav-link" id="nav-resetBle-tab" data-toggle="tab" href="#nav-resetBle" role="tab" aria-controls="nav-resetBle" aria-selected="false" hidden>Reset LoRa</a>
     <a class="nav-item nav-link" id="nav-conn-tab" data-toggle="tab" href="#nav-conn" role="tab" aria-controls="nav-conn" aria-selected="false" hidden>连接设定</a>
-    <a class="nav-item nav-link" id="nav-conf-tab" data-toggle="tab" href="#nav-conf" role="tab" aria-controls="nav-conf" aria-selected="false" hidden>传感器配置</a>
-    <a class="nav-item nav-link" id="nav-conf-gw-tab" data-toggle="tab" href="#nav-conf-gw" role="tab" aria-controls="nav-conf-gw" aria-selected="false" hidden>网关配置</a>
+    <a class="nav-item nav-link" id="nav-conf-tab" data-toggle="tab" href="#nav-conf" role="tab" aria-controls="nav-conf" aria-selected="false">传感器配置</a>
+    <a class="nav-item nav-link" id="nav-conf-gw-tab" data-toggle="tab" href="#nav-conf-gw" role="tab" aria-controls="nav-conf-gw" aria-selected="false">网关配置</a>
     <a class="nav-item nav-link" id="nav-resetredis-tab" data-toggle="tab" href="#nav-resetredis" role="tab" aria-controls="nav-resetredis" aria-selected="false" hidden>重设Redis</a>
     <a class="nav-item nav-link" id="nav-reboot-tab" data-toggle="tab" href="#nav-reboot" role="tab" aria-controls="nav-reboot" aria-selected="false">重启系统</a>
   </div>
@@ -75,23 +74,6 @@
       </table>
     </div>
   </div>
-  
-  
-<!--   ###############         HERE IS THE LOCK SETTINGS (START)       ###############   -->
-  <div class="tab-pane fade" id="nav-resetLock" role="tabpanel" aria-labelledby="nav-update-tab">
-    <br>
-    <div>
-      <form method="POST" action="/setLock">
-		<input name="setLock" class="form-check-input" id="setLock" value="1" required hidden>
-        <button type="submit" class="btn btn-light px-5">解锁</button>
-      </form>
-    </div>
-    <br>
-  </div>
-<!--   ###############         HERE IS THE LOCK SETTINGS (END)       ###############   -->  
-  
-  
-  
   <div class="tab-pane fade" id="nav-resetBle" role="tabpanel" aria-labelledby="nav-update-tab">
     <br>
     <div>
